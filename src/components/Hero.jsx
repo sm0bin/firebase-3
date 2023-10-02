@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
     <div className="hero min-h-[calc(100vh-5rem)] bg-base-200">
@@ -13,7 +15,9 @@ export default function Hero() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <Link to="/login">
+            <button className="btn btn-primary">Login</button>
+          </Link>
         </div>
       </div>
     </div>

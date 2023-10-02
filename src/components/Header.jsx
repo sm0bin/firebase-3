@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
   const navLinks = (
@@ -47,7 +47,9 @@ export default function Header() {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link to="/login">
+          <button className="btn btn-primary">Login</button>
+        </Link>
       </div>
     </div>
   );
