@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 export default function Hero() {
+  const authInfo = useContext(AuthContext);
+  console.log(authInfo);
+
   return (
     <div className="hero min-h-[calc(100vh-5rem)] bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
