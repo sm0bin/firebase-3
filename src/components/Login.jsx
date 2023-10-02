@@ -6,7 +6,6 @@ const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
@@ -28,18 +27,6 @@ const Login = () => {
         <div className=" w-full shadow-2xl bg-base-100">
           <div className="card-body">
             <form onSubmit={handleLogin}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="name"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

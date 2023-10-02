@@ -7,6 +7,8 @@ import Hero from "./components/Hero";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import AuthProvider from "./providers/AuthProvider";
+import Table from "./components/Table";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/table",
+        element: (
+          <PrivateRoutes>
+            <Table></Table>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

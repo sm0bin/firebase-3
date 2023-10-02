@@ -3,7 +3,17 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 export default function Header() {
-  const { user } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        alert("user Log out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const navLinks = (
     <>
@@ -15,6 +25,9 @@ export default function Header() {
       </li>
       <li>
         <NavLink to="/sign-up">Sign Up</NavLink>
+      </li>
+      <li>
+        <NavLink to="/table">Table</NavLink>
       </li>
     </>
   );
@@ -63,7 +76,9 @@ export default function Header() {
                 <img src="https://images.pexels.com/photos/18399245/pexels-photo-18399245/free-photo-of-brunette-woman-posing-on-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
               </div>
             </label>
-            <button className="btn btn-neutral">Logout</button>
+            <button className="btn btn-neutral" onClick={handleLogout}>
+              Logout
+            </button>
           </>
         ) : (
           <>
