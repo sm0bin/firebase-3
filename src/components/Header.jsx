@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 export default function Header() {
+  const { user } = useContext(AuthContext);
+
   const navLinks = (
     <>
       <li>
@@ -47,9 +51,27 @@ export default function Header() {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn btn-primary">Login</button>
-        </Link>
+        {user ? (
+          <>
+            <p>{user.email}</p>
+            <label
+              htmlFor="my-drawer-4"
+              tabIndex={0}
+              className="drawer-button btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img src="https://images.pexels.com/photos/18399245/pexels-photo-18399245/free-photo-of-brunette-woman-posing-on-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+              </div>
+            </label>
+            <button className="btn btn-neutral">Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="btn btn-neutral">Login</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
