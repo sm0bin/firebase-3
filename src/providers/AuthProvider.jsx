@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import PropTypes from "prop-types";
@@ -37,6 +38,12 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const updateUser = (userName) => {
+    return updateProfile(auth.currentUser, {
+      displayName: userName,
+    });
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -54,6 +61,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     loginGoogle,
+    updateUser,
   };
 
   return (
