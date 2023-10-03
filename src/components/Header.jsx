@@ -26,9 +26,17 @@ export default function Header() {
       <li>
         <NavLink to="/sign-up">Sign Up</NavLink>
       </li>
-      <li>
-        <NavLink to="/table">Table</NavLink>
-      </li>
+
+      {user && (
+        <>
+          <li>
+            <NavLink to="/table">Table</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -73,7 +81,13 @@ export default function Header() {
               className="drawer-button btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img src="https://images.pexels.com/photos/18399245/pexels-photo-18399245/free-photo-of-brunette-woman-posing-on-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                <img
+                  src={
+                    user.photoURL
+                      ? user.photoURL
+                      : "https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg"
+                  }
+                />
               </div>
             </label>
             <button className="btn btn-neutral" onClick={handleLogout}>
